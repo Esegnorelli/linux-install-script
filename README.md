@@ -1,69 +1,86 @@
-# BashScript
+# Script de Instalação de Programas para Linux
 
-BashScript é uma linguagem de script utilizada em sistemas operacionais baseados em Unix, como Linux e macOS. É uma das linguagens de script mais populares para automação de tarefas em sistemas Unix.
+Este é um script em bash que automatiza a instalação de vários programas úteis para um sistema Linux. 
 
-## Como executar um script Bash
+## Variáveis
 
-Para executar um script Bash, é necessário criar um arquivo com a extensão `.sh` e adicionar o código do script. Em seguida, o arquivo precisa ser tornar executável com o comando `chmod +x <nome_do_arquivo.sh>`. Finalmente, execute o script usando o comando `./<nome_do_arquivo.sh>`.
+- `PPA_LIBRATBAG` - Repositório PPA do Libratbag.
+- `PPA_LUTRIS` - Repositório PPA do Lutris.
+- `URL_WINE_KEY` - URL da chave de autenticação do Wine.
+- `URL_PPA_WINE` - URL do repositório do Wine.
+- `DIRETORIO_DOWNLOADS` - Diretório de download dos programas.
 
-## Exemplo de script Bash
+## Funções
 
-```bash
-#!/bin/bash
+- `remove_locks()` - Remove os arquivos de trava do APT.
+- `add_repositories()` - Adiciona os repositórios necessários para instalar os programas.
+- `install_programs()` - Instala os programas listados no array `PROGRAMAS_PARA_INSTALAR`.
+- `install_flatpak_snap()` - Instala o Flatpak e o Snap, e alguns programas por meio desses sistemas.
+- `update_and_cleanup()` - Atualiza o sistema e remove pacotes desnecessários.
 
-echo "Qual é o seu nome?"
-read nome
-echo "Olá, $nome!"
+## Execução
+
+Para executar o script, basta rodar o seguinte comando:
+
+```
+$ sudo bash install_programs.sh
 ```
 
-Este script pede ao usuário que insira seu nome e, em seguida, imprime uma saudação personalizada.
+**Observação:** é importante que o usuário tenha permissões administrativas para executar o script.## Como usar
 
-## Variáveis em scripts Bash
+Para usar o script, siga os seguintes passos:
 
-As variáveis em BashScript são definidas utilizando a sintaxe `nome_da_variavel=valor`. Por exemplo:
-
-```bash
-nome="João"
-echo "Olá, $nome!"
+1. Abra o terminal.
+2. Baixe o arquivo `install_programs.sh`.
+3. Dê permissão de execução ao arquivo:
+```
+$ chmod +x install_programs.sh
+```
+4. Execute o script como administrador:
+```
+$ sudo ./install_programs.sh
 ```
 
-Este script define uma variável chamada `nome` e, em seguida, imprime uma saudação personalizada utilizando o valor armazenado na variável.
+**Observação:** é importante lembrar que o script foi testado em distribuições baseadas em Ubuntu e pode não funcionar em outras distribuições sem ajustes. Além disso, o script pode instalar pacotes adicionais além dos que foram listados. É recomendado que você revise o script e ajuste-o de acordo com suas necessidades.
 
-## Condicionais em scripts Bash
+## Programas Instalados
 
-As condicionais em BashScript são implementadas utilizando a sintaxe `if`, `else` e `fi`. Por exemplo:
+O script instala os seguintes programas:
 
-```bash
-#!/bin/bash
+- snapd
+- mint-meta-codecs
+- winff
+- guvcview
+- virtualbox
+- flameshot
+- nemo-dropbox
+- steam-installer
+- steam-devices
+- steam:i386
+- ratbagd
+- piper
+- lutris
+- libvulkan1
+- libvulkan1:i386
+- libgnutls30:i386
+- libldap-2.4-2:i386
+- libgpg-error0:i386
+- libxml2:i386
+- libasound2-plugins:i386
+- libsdl2-2.0-0:i386
+- libfreetype6:i386
+- libdbus-1-3:i386
+- libsqlite3-0:i386
+- Wine (stable)
 
-echo "Qual é a sua idade?"
-read idade
+O script também instala o Flatpak e o Snap e os seguintes programas por meio desses sistemas:
 
-if [ $idade -ge 18 ]
-then
-  echo "Você é maior de idade."
-else
-  echo "Você é menor de idade."
-fi
-```
+- OBS Studio
+- Spotify
+- Slack
+- Skype
+- Photogimp (versão otimizada do GIMP)
 
-Este script pede ao usuário que insira sua idade e, em seguida, imprime se ele é maior ou menor de idade.
+## Considerações Finais
 
-## Loops em scripts Bash
-
-Os loops em BashScript são implementados utilizando a sintaxe `for`, `while` ou `until`. Por exemplo:
-
-```bash
-#!/bin/bash
-
-for i in {1..5}
-do
-  echo "Contando $i"
-done
-```
-
-Este script utiliza um loop `for` para imprimir a contagem de 1 a 5.
-
-## Conclusão
-
-O BashScript é uma linguagem poderosa e flexível para a automação de tarefas em sistemas Unix. Compreender as noções básicas de como criar e executar scripts Bash, definir variáveis, criar condicionais e loops são fundamentais para começar a utilizar essa ferramenta.
+Este script é uma maneira rápida e fácil de instalar vários programas em um sistema Linux. No entanto, é importante lembrar que o script pode instalar pacotes adicionais além dos que foram listados e é recomendado que você revise o script e ajuste-o de acordo com suas necessidades. Além disso, o script foi testado em distribuições baseadas em Ubuntu e pode não funcionar em outras distribuições sem ajustes.
